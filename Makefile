@@ -7,7 +7,7 @@ clang : clang.tar.xz
 	tar -xf clang.tar.xz --directory clang --strip-components=1
 
 musl.tar.xz :
-	wget -c https://www.musl-libc.org/releases/musl-1.1.21.tar.gz \
+	wget -c https://www.musl-libc.org/releases/musl-1.2.2.tar.gz \
 		-O musl.tar.xz
 
 musl : musl.tar.xz clang
@@ -26,7 +26,7 @@ helloc.i : helloc.c musl clang
 
 helloc.o : helloc.i clang
 	./clang/bin/clang \
-		-std=c11 \
+		-std=c17 \
 		-nostdinc \
 		-nodefaultlibs \
 		--sysroot ./musl/root \
